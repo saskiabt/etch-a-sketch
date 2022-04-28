@@ -1,0 +1,17 @@
+
+.squaresContainer {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+    gap:0px;
+    width: 800px; 
+    height: 800px;
+}
+
+.squaresContainer {
+    width: 800px; 
+    height: 800px;
+}
+.gridSquare:hover { 
+    background-color: black;
+}
