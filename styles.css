@@ -1,17 +1,59 @@
+.box { 
+    display: flex;
+    justify-content: center;
+    border: 5px;
+    border-color: black;
+}
 
-.squaresContainer {
+.squares-container {
     display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(16, 1fr);
     gap:0px;
     width: 800px; 
     height: 800px;
+    align-content: center;
+    outline: 5px solid rgb(245, 87, 87);
+
+
 }
 
-.squaresContainer {
-    width: 800px; 
-    height: 800px;
+/* .gridSquare:hover { 
+    background-color: black;
+} */
+
+#buttonContainer{ 
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap:10px;
 }
-.gridSquare:hover { 
+
+.gridSquare { 
+    border: black 2px;
+   
+}
+
+.draw { 
+    background-color: black;
+}
+
+#content { 
+    display: flex;
+    flex-direction: column;
+    gap:50px;
+
+}
+
+.etch-a-sketch-box { 
+    display: flex;
+    justify-content: center;
+}
+
+.input-box { 
+    display: flex;
+    gap:20px;
+}
+
+.permahover { 
     background-color: black;
 }
