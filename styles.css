@@ -1,3 +1,6 @@
+body { 
+    background-color: rgb(4, 6, 41);
+}
 .box { 
     display: flex;
     justify-content: center;
@@ -13,6 +16,7 @@
     align-content: center;
     outline: 5px solid rgb(245, 87, 87);
     background-color: white;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 
 
 }
@@ -56,6 +60,7 @@
     display: flex;
     gap:5px;
     flex-direction: column;
+    margin-top: 30px;
 }
 
 .permahover { 
@@ -67,14 +72,17 @@
     height: 750px;
     margin-right: -675px;
     margin-top: -75px;
-    background-color: red;
+    background-color: rgb(218, 25, 25);
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.4) 1px 8px 20px;
 }
 
 
 .header { 
-    padding-bottom: 60px;
+    padding-bottom: 50px;
+    margin-top: 40px;
 }
 
 #slider-box{ 
@@ -82,10 +90,41 @@
     margin-left: 532px; */
     display: flex;
     flex-direction: row;
+    gap:25px;
 }
 
 .title-text { 
-    font-family: cursive;
-    font-size: 20px;
+    font-family: "bc-eric-machat-script", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2.8em;
     margin-left: 7px;
+    color: #faf5f0;
 }
+
+.upper-content { 
+    display: flex;
+    justify-content: center;
+    gap: 187px;
+    margin-top: -8px;
+}
+
+.lower-content { 
+    display: flex;
+    align-items: flex-end;
+    padding-left: 88px;
+    margin-bottom: 15px;
+    font-family: "bc-eric-machat", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    color: rgb(252, 227, 227);
+    padding-top: 490px;
+    justify-content: flex-start;
+    margin-top: 80px;
+    
+}
+
+.yellow { 
+    color: rgb(128, 10, 10);
+}
+

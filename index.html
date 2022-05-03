@@ -5,30 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://use.typekit.net/bfu1dyw.css">
     <title>Etch-a-Sketch</title>
 </head>
 <body>
     <div id = "content">
         <div class = "header">
-            <div>Etch-a-Sketch</div>
+            <!-- <div>Etch-a-Sketch</div> -->
         </div>
          <div class = "etch-a-sketch-box">
              <div class = "box-border">
-                 <div class = "upper-content"></div>
-                <div class = "title-text">Etch-a-Sketch</div>
-                 <!-- <div id="buttonContainer"> -->
+                 <div class = "upper-content">
+                    <div class = "title-text">Etch-a-Sketch</div>
+                 </div>
+                 <div class = "lower-content">
                      <div class = "input-box">
-                        <div class = "input-prompt">
-                        Drag to change grid dimensions:
-                        </div>
+                        <div class = "input-prompt">Drag to change grid dimensions:</div>
                         <div id = "slider-box">
                             <input type ="range" name="lengthInput" id="lengthInput" min="0" max="100" step="10" value="60">
-                                <!-- <label for="lengthInput" id ="input-label">Drag to change dimensions: 60x60</label> -->
                             <div class="length-output">60 x 60</div>
-                        </div>
-                            
+                        </div>   
                     </div>
-                <!-- </div>    -->
+                 </div>
              </div>
             <div class = "squares-container"></div>
         </div>
