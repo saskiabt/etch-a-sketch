@@ -1,4 +1,5 @@
 
+// Global Variables 
 let content= document.getElementById('content'); 
 let squaresContainer = document.querySelector('.squares-container')
 let buttonContainer = document.getElementById('buttonContainer')
@@ -9,9 +10,15 @@ let sliderBox = document.querySelector('#slider-box');
 let lengthInput = document.querySelector("#lengthInput")
 let inputLabel = document.getElementById('input-label'); 
 let lengthOutput = document.querySelector('.length-output')
+const blueButton = document.querySelector('#blue-button'); 
+const blackButton = document.querySelector('#black-button');  
+const rainbowButton = document.getElementById('rainbow-button'); 
+const clearButton = document.getElementById('clear-button'); 
+let colorChoice = "black"; 
 
 
 
+// creates a grid with X by X dimensions 
 function createSquares(x) { 
     let num = x**2
     for (let i=1; i<(num)+1; i++ ) {
@@ -24,6 +31,7 @@ function createSquares(x) {
     }
 }
 
+// removes all children w the given CSS selector (class or id) from the parent node 
 function removeChildren(cssSelector, parentNode){
     var elements = parentNode.querySelectorAll(cssSelector);
     let fragment = document.createDocumentFragment(); 
@@ -31,6 +39,7 @@ function removeChildren(cssSelector, parentNode){
     fragment.firstChild.replaceWith(...elements);
 }
 
+// formats grid to have *length* # of columns and *length* # of rows inside squares container 
 function sizeGrid(length) { 
     let gridSizeStyle = document.createElement('style'); 
     gridSizeStyle.innerHTML = `
@@ -48,64 +57,57 @@ function hover(element, enter, leave) {
     element.addEventListener('mouseleave',leave)
 }
 
+// adds permahover class when mouse passes through grid square 
+function startDraw() { 
+    for (let i=0; i<squares.length; i++) { 
+        squares[i].removeAttribute('class'); 
+        squares[i].addEventListener('mouseover', ()=> {
+            squares[i].classList.add(`permahover-${colorChoice}`);
+        });
+    }  
+} 
 
-let xyInput = () => { 
+
+let runGame = () => { 
     createSquares(60); 
     sizeGrid(60); 
-    // when a dimension is inputted, create grid square divs and create grid layout to hold them in amt inputted
-        lengthInput.addEventListener('input', () => { 
-            removeChildren('.gridSquare', squaresContainer);
+    startDraw(); 
+
+    lengthInput.addEventListener('input', () => { 
+        removeChildren('.gridSquare', squaresContainer);
             
-            lengthOutput.textContent= `${lengthInput.value} x ${lengthInput.value}`;
-            console.log(lengthInput.value); 
+        lengthOutput.textContent= `${lengthInput.value} x ${lengthInput.value}`;
+        console.log(lengthInput.value); 
 
-            createSquares(lengthInput.value);
+        createSquares(lengthInput.value);
 
-            sizeGrid(lengthInput.value); 
-         
-        // }); 
+        sizeGrid(lengthInput.value); 
 
+        startDraw();
     });
         
 };
 
-xyInput(); 
+runGame(); 
 
-
-function draw() { 
-    squaresContainer.addEventListener('click', () => { 
-        for (let i=0; i<squares.length; i++) { 
-            squares[i].addEventListener('mouseover', ()=> {
-                squares[i].classList.add('permahover'); 
-                
-                squaresContainer.addEventListener('click', () => { 
-                    squares[i].classList.remove('permahover')
-                })
-            }); 
-        }
-    });
+// sets permahover class in whichever color user picks 
+let drawColor = (colorChoice) => { 
+    for (let i=0; i<squares.length; i++) { 
+        squares[i].removeAttribute('class'); 
+        squares[i].addEventListener('mouseover', ()=> {
+            squares[i].className(`permahover-${colorChoice}`);
+        });
+    }
 }
 
+ blueButton.addEventListener('click', () => {
+     colorChoice = "blue"; 
+     drawColor(colorChoice); 
+ }); 
 
-draw(); 
-
-
-
-// function startDraw() { 
-//     squaresContainer.addEventListener('dblclick', () => { 
-//         for (let i=0; i<squares.length; i++) { 
-//             squares[i].addEventListener('mouseover', () => {
-//                 squares[i].classList.add('permahover'); 
-//             }); 
-//         }
-//     });
-// }
-
-// function endDraw() { 
-
-// }
-
-
-// next thing to do is to make it so the computer starts drawing on click, keeps drawing on hover, and stops drawing on click!
+blackButton.addEventListener('click', () => {
+    colorChoice = "black"; 
+    drawColor(colorChoice); 
+}); 
 
 
