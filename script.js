@@ -10,12 +10,18 @@ let sliderBox = document.querySelector('#slider-box');
 let lengthInput = document.querySelector("#lengthInput")
 let inputLabel = document.getElementById('input-label'); 
 let lengthOutput = document.querySelector('.length-output')
+
 const blueButton = document.querySelector('#blue-button'); 
 const blackButton = document.querySelector('#black-button');  
 const rainbowButton = document.getElementById('rainbow-button'); 
 const clearButton = document.getElementById('clear-button'); 
+
 let colorChoice = "black"; 
 
+let r; 
+let g; 
+let b; 
+let rgb = `rgb(${r},${g},${b})`; 
 
 
 // creates a grid with X by X dimensions 
@@ -57,15 +63,76 @@ function hover(element, enter, leave) {
     element.addEventListener('mouseleave',leave)
 }
 
+//picks a random number inclusive of min and max, to be used to pick r, g, and b values 
+function getRandomInt(min,max) { 
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+}
+
 // adds permahover class when mouse passes through grid square 
 function startDraw() { 
     for (let i=0; i<squares.length; i++) { 
         squares[i].removeAttribute('class'); 
         squares[i].addEventListener('mouseover', ()=> {
-            squares[i].classList.add(`permahover-${colorChoice}`);
+            squares[i].className=`permahover-black`;
         });
     }  
 } 
+
+
+//picks a random rgb value and adds event listener to rainbow button to draw in that color on click
+
+function chooseColor() { 
+    r = getRandomInt(0,255); 
+    g = getRandomInt(0,255); 
+    b = getRandomInt(0,255); 
+
+    rgb = `rgb(${r},${g},${b})`
+
+    console.log(`r = ${r}`); 
+    console.log(`g = ${g}`); 
+    console.log(`b = ${b}`); 
+    console.log(rgb);
+}; 
+
+
+// sets permahover class in whichever color user picks 
+let drawColor = (colorChoice) => { 
+    for (let i=0; i<squares.length; i++) { 
+        squares[i].removeAttribute('class'); 
+        squares[i].removeAttribute("style"); 
+        squares[i].addEventListener('mouseover', ()=> {
+            squares[i].removeAttribute("style"); 
+            squares[i].className=`permahover-${colorChoice}`;
+        });
+    }
+}
+
+
+function colorPicker() { 
+    blackButton.addEventListener('click', () => {
+        colorChoice = "black"; 
+        drawColor(colorChoice); 
+    }); 
+
+    blueButton.addEventListener('click', () => {
+        colorChoice = "blue"; 
+        drawColor(colorChoice); 
+    }); 
+
+    rainbowButton.addEventListener('click', () => { 
+        chooseColor(); 
+        console.log(rgb); 
+        for (let i=0; i<squares.length; i++) { 
+            squares[i].removeAttribute('class'); 
+            squares[i].addEventListener('mouseover', ()=> {
+                squares[i].className = 'permahover-random'
+                squares[i].style.backgroundColor = `${rgb}`; 
+            });
+        }
+    });
+}
 
 
 let runGame = () => { 
@@ -83,31 +150,13 @@ let runGame = () => {
 
         sizeGrid(lengthInput.value); 
 
+
         startDraw();
+        colorPicker(); 
     });
         
 };
 
 runGame(); 
 
-// sets permahover class in whichever color user picks 
-let drawColor = (colorChoice) => { 
-    for (let i=0; i<squares.length; i++) { 
-        squares[i].removeAttribute('class'); 
-        squares[i].addEventListener('mouseover', ()=> {
-            squares[i].className(`permahover-${colorChoice}`);
-        });
-    }
-}
-
- blueButton.addEventListener('click', () => {
-     colorChoice = "blue"; 
-     drawColor(colorChoice); 
- }); 
-
-blackButton.addEventListener('click', () => {
-    colorChoice = "black"; 
-    drawColor(colorChoice); 
-}); 
-
-
+colorPicker(); 
