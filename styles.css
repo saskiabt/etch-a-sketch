@@ -34,10 +34,14 @@ body {
     padding-bottom: 70px;
 }
 
-.gridSquare { 
-    border: black 2px;
-   
+.gridShowing {
+    border-top: .01px solid rgba(173, 172, 172, 0.212);
+    border-right: .01px solid rgba(173, 172, 172, 0.212);
+    border-left: .01px solid rgba(173, 172, 172, 0.212);
+    border-bottom: .01px solid rgba(173, 172, 172, 0.212);
 }
+  
+  
 
 .draw { 
     background-color: black;
@@ -131,7 +135,7 @@ body {
     color: rgb(252, 227, 227);
       /* rgb(252 235 217) */
     justify-content: flex-start;
-    gap:121px;
+    gap:100px;
     
     
 }
@@ -150,17 +154,16 @@ body {
 
 
   
-  .input-prompt { 
-      display: flex;
-      justify-content: center;
-      font-size: 1.15rem;
-  }
+.input-prompt { 
+    display: flex;
+    justify-content: center;
+    font-size: 1.15rem;
+}
 
-  .buttons-box { 
-      display: flex;
-      /* padding-left: 96px; */
-      gap: 15px;
-      padding-bottom: 5px;
+.buttons-box { 
+    display: flex;
+    gap: 15px;
+    padding-bottom: 5px;
       
   }
 
@@ -170,11 +173,12 @@ body {
     font-style: normal; 
     font-size: .9em;
     background-color: rgb(218, 25, 25);
-    border-color: white;
+    border-color: rgb(156, 62, 62);
     padding: 4px;
     color: rgb(252, 227, 227);
     border-radius: 8px;
-    padding: 6px;
+    padding: 10px;
+    display: flex;
   }
 
   button:hover { 
@@ -184,23 +188,35 @@ body {
 
   #black-button { 
       background-color: black;
-      padding: 15px;
+      padding: 18px;
   }
 
   #blue-button { 
       background-color: rgb(22, 5, 255);
-      padding: 15px;
+      padding: 18px;
   }
 
   #rainbow-button { 
-      padding:15px;
+      padding: 18px;
       font-family: "bc-eric-machat",sans-serif;
       font-weight: 700;
       font-style: normal;
-      font-size: 1.2rem;
+      font-size: 1rem;
       color: white;
       background: rgb(252,0,0);
       background: linear-gradient(180deg, rgba(252,0,0,1) 13%, rgba(236,255,0,1) 34%, rgba(1,168,30,1) 43%, rgba(50,92,217,1) 58%, rgba(246,20,160,1) 86%);
   }
+
+#grid-button { 
+    padding:4px
+}
+
+
+#grid-icon { 
+    padding-top: 2px;
+    width: 28px; 
+    height:28px; 
+    color: white;
+}
 
   

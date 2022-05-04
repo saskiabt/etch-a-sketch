@@ -15,6 +15,7 @@ const blueButton = document.querySelector('#blue-button');
 const blackButton = document.querySelector('#black-button');  
 const rainbowButton = document.getElementById('rainbow-button'); 
 const clearButton = document.getElementById('clear-button'); 
+const gridButton = document.querySelector("#grid-button"); 
 
 let colorChoice = "black"; 
 
@@ -75,11 +76,10 @@ function startDraw() {
     for (let i=0; i<squares.length; i++) { 
         squares[i].removeAttribute('class'); 
         squares[i].addEventListener('mouseover', ()=> {
-            squares[i].className=`permahover-black`;
+            squares[i].className=`permahover-black`; 
         });
     }  
 } 
-
 
 //picks a random rgb value and adds event listener to rainbow button to draw in that color on click
 
@@ -126,6 +126,7 @@ function colorPicker() {
         console.log(rgb); 
         for (let i=0; i<squares.length; i++) { 
             squares[i].removeAttribute('class'); 
+            squares[i].removeAttribute("style"); // toggling this on and off will change whether screen clears on each click of rainbow button 
             squares[i].addEventListener('mouseover', ()=> {
                 squares[i].className = 'permahover-random'
                 squares[i].style.backgroundColor = `${rgb}`; 
@@ -134,14 +135,14 @@ function colorPicker() {
     });
 }
 
-
 let runGame = () => { 
-    createSquares(60); 
-    sizeGrid(60); 
+    createSquares(40); 
+    sizeGrid(40); 
     startDraw(); 
+   
 
     lengthInput.addEventListener('input', () => { 
-        removeChildren('.gridSquare', squaresContainer);
+        removeChildren('div', squaresContainer);
             
         lengthOutput.textContent= `${lengthInput.value} x ${lengthInput.value}`;
         console.log(lengthInput.value); 
@@ -153,10 +154,25 @@ let runGame = () => {
 
         startDraw();
         colorPicker(); 
+            
     });
         
 };
 
 runGame(); 
-
 colorPicker(); 
+
+clearButton.addEventListener('click', () => { 
+    for (let i=0; i<squares.length; i++) { 
+        squares[i].removeAttribute('class'); 
+        squares[i].removeAttribute("style");
+    }
+})
+
+
+gridButton.addEventListener('click', () => { 
+    for (let i=0; i<squares.length; i++) { 
+        squares[i].classList.toggle('gridShowing'); 
+    }
+}); 
+
