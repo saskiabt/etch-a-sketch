@@ -32,6 +32,20 @@ gridBorder.innerHTML = `
 `
 gridBorder.classList.add('grid-border'); 
 
+function toggleGrid() { 
+    gridButton.addEventListener('click', () => { 
+        if (gridBorder.innerHTML !== '') { 
+            gridBorder.innerHTML = ''
+        } else if (gridBorder.innerHTML === '') { 
+            gridBorder.innerHTML = `
+            .squares-container > div {
+                border: .01px solid rgba(173, 172, 172, 0.212);
+            }
+            `
+        }
+    });
+}
+
 
 // creates a grid with X by X number of squares and x by x number of columns and rows 
 function createSquares(x) { 
@@ -41,8 +55,6 @@ function createSquares(x) {
             gridSquare.setAttribute("id", `Square${i}`); 
             gridSquare.classList.add('gridSquare'); 
             squaresContainer.appendChild(gridSquare);
-        
-
     }
 
     let gridSizeStyle = document.createElement('style'); 
@@ -58,17 +70,7 @@ function createSquares(x) {
         squares[i].appendChild(gridBorder)
     }
 
-    gridButton.addEventListener('click', () => { 
-        if (gridBorder.innerHTML !== '') { 
-            gridBorder.innerHTML = ''
-        } else if (gridBorder.innerHTML === '') { 
-            gridBorder.innerHTML = `
-            .squares-container > div {
-                border: .01px solid rgba(173, 172, 172, 0.212);
-            }
-            `
-        }
-    }); 
+    toggleGrid(); 
 }; 
 
 // removes all children w the given CSS selector (class or id) from the parent node 
@@ -79,12 +81,6 @@ function removeChildren(cssSelector, parentNode){
     fragment.firstChild.replaceWith(...elements);
 }
 
-
-// adds hover class to elements
-function hover(element, enter, leave) { 
-    element.addEventListener('mouseenter', enter)
-    element.addEventListener('mouseleave',leave)
-}
 
 //picks a random number inclusive of min and max, to be used to pick r, g, and b values 
 function getRandomInt(min,max) { 
@@ -122,7 +118,7 @@ function chooseColor() {
 }; 
 
 
-// sets permahover class in whichever color user picks 
+// sets permahover class in whichever color user picks after initial drawing session starts 
 let drawColor = (colorChoice) => { 
     for (let i=0; i<squares.length; i++) { 
         squares[i].removeAttribute('class'); 
@@ -208,18 +204,8 @@ let runGame = () => {
 
         startDraw();
         colorPicker(); 
-        
-        gridButton.addEventListener('click', () => { 
-            if (gridBorder.innerHTML !== '') { 
-                gridBorder.innerHTML = ''
-            } else if (gridBorder.innerHTML === '') { 
-                gridBorder.innerHTML = `
-                .squares-container > div {
-                    border: .01px solid rgba(173, 172, 172, 0.212);
-                }
-                `
-            }
-        }); 
+
+        toggleGrid(); 
             
     });
         
