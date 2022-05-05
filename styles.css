@@ -22,9 +22,6 @@ body {
 
 }
 
-/* .gridSquare:hover { 
-    background-color: black;
-} */
 
 #buttonContainer{ 
     display: flex;
@@ -33,6 +30,8 @@ body {
     gap:10px;
     padding-bottom: 70px;
 }
+
+
 
 .gridShowing {
     border-top: .01px solid rgba(173, 172, 172, 0.212);
@@ -63,10 +62,15 @@ body {
 }
 
 .input-box { 
+    font-family: bc-eric-machat, sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    color: rgb(252, 227, 227);
     display: flex;
-    gap:5px;
+    gap: 83px;
     flex-direction: column;
-    /* margin-top: 30px; */
+    margin-bottom: 247px;
+    margin-left: -120px;
 }
 
 .permahover-black { 
@@ -87,7 +91,7 @@ body {
     display: flex;
     /* justify-content: space-between; */
     flex-direction: column;
-    box-shadow: inset rgba(207, 142, 142, 0.4) 1px 8px 20px;
+    box-shadow: inset rgb(241 118 118 / 40%) 0px 1px 5px 14px;
     border-radius: 10% / 50%;
     justify-content: space-between;
 }
@@ -99,8 +103,6 @@ body {
 }
 
 #slider-box{ 
-    /* margin-right: -410px;
-    margin-left: 532px; */
     display: flex;
     flex-direction: row;
     gap:6px;
@@ -133,10 +135,8 @@ body {
     font-weight: 400;
     font-style: italic;
     color: rgb(252, 227, 227);
-      /* rgb(252 235 217) */
     justify-content: flex-start;
-    gap:100px;
-    
+    gap: 62px;
     
 }
 
@@ -146,44 +146,62 @@ body {
 
 
 .length-output { 
+    color: rgb(252, 227, 227);
     font-family: bc-eric-machat, sans-serif;
     font-weight: 300;
     font-style: normal;
-    font-size: .9em;
+    font-size: 14px;
+    padding-left: 60px;
 }
 
 
   
-.input-prompt { 
+.input-prompt {
+    font-family: "bc-eric-machat", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    color: rgb(252, 227, 227);
     display: flex;
     justify-content: center;
     font-size: 1.15rem;
 }
 
+
 .buttons-box { 
+    font-family: "bc-eric-machat", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    color: rgb(252, 227, 227);
     display: flex;
-    gap: 15px;
+    gap: 20px;
     padding-bottom: 5px;
+    padding-left:33px;
       
   }
 
   button { 
     font-family: "bc-eric-machat", sans-serif;
-    font-weight: 800;
+    font-weight: 600;
     font-style: normal; 
     font-size: .9em;
     background-color: rgb(218, 25, 25);
-    border-color: rgb(156, 62, 62);
+    /* border-color: rgb(118, 77, 77); */
+    box-shadow:  rgba(207, 142, 142, 0.4) 1px 8px 20px;
+    border: 2px solid rgb(214, 119, 119);;
     padding: 4px;
-    color: rgb(252, 227, 227);
-    border-radius: 8px;
+    color: rgb(251, 240, 240);
+    border-radius: 15px;
     padding: 10px;
     display: flex;
+    /* box-shadow: rgb(42 29 29 / 40%) 1px -3px 3px 1.2px; */
+    box-shadow: rgb(51 10 10 / 65%) 0px -1px 0px 1px;
+    letter-spacing: .05rem;
   }
 
   button:hover { 
-      background-color: rgb(226, 227, 245) ;
-      color: rgb(11, 15, 90)
+      border: 2px solid white;
+      /* background-color: rgb(226, 227, 245) ; */
+      color: rgb(255, 255, 255)
   }
 
   #black-button { 
@@ -219,4 +237,37 @@ body {
     color: white;
 }
 
-  
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 10rem;
+    transform: rotate(270deg);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    background: #053a5f;
+    height: 1rem;
+    box-shadow: rgb(51 10 10 / 65%) 0px -1px 0px 1px;
+  }
+
+  input[type="range"]::-moz-range-track {
+    background: #053a5f;
+    height: 1rem;
+    box-shadow: rgb(51 10 10 / 65%) 0px -1px 0px 1px;
+  }
+
+  ::-webkit-slider-thumb { 
+    -webkit-appearance: none;
+    height: 1rem;
+    width: .5rem;
+    background: white;
+  }
+
+  ::-moz-range-thumb { 
+    -webkit-appearance: none;
+    height: 1rem;
+    width: .5rem;
+    background: white;
+  }
