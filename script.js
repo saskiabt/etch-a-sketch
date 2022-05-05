@@ -25,7 +25,7 @@ let b;
 let rgb = `rgb(${r},${g},${b})`; 
 
 
-// creates a grid with X by X dimensions 
+// creates a grid with X by X number of squares and x by x number of columns and rows 
 function createSquares(x) { 
     let num = x**2
     for (let i=1; i<(num)+1; i++ ) {
@@ -36,6 +36,15 @@ function createSquares(x) {
         
 
     }
+
+    let gridSizeStyle = document.createElement('style'); 
+    gridSizeStyle.innerHTML = `
+        .squares-container { 
+            grid-template-columns: repeat(${x}, 1fr);
+            grid-template-rows: repeat(${x}, 1fr);
+        }
+    `; 
+    squaresContainer.appendChild(gridSizeStyle);
 }
 
 // removes all children w the given CSS selector (class or id) from the parent node 
@@ -46,17 +55,6 @@ function removeChildren(cssSelector, parentNode){
     fragment.firstChild.replaceWith(...elements);
 }
 
-// formats grid to have *length* # of columns and *length* # of rows inside squares container 
-function sizeGrid(length) { 
-    let gridSizeStyle = document.createElement('style'); 
-    gridSizeStyle.innerHTML = `
-        .squares-container { 
-            grid-template-columns: repeat(${length}, 1fr);
-            grid-template-rows: repeat(${length}, 1fr);
-        }
-    `; 
-    squaresContainer.appendChild(gridSizeStyle);
-}
 
 // adds hover class to elements
 function hover(element, enter, leave) { 
@@ -145,17 +143,23 @@ clearButton.addEventListener('click', () => {
 })
 
 
-// gridButton.addEventListener('click', () => { 
-//    for (let i=0; i<squares.length; i++) {
-//     squares[i].classList.toggle('gridShowing')
-//    }
-// //    gridSquares.classList.toggle('gridShowing'); 
-// }); 
+gridButton.addEventListener('click', () => { 
+   for (let i=0; i<squares.length; i++) {
+    squares[i].removeAttribute("style"); 
+   }
+
+   let gridDivs = document.querySelectorAll('.squares-container > div')
+   let gridDivs_array = [...gridDivs]; 
+   gridDivs_array.forEach(div => {
+       div.removeAttribute('style');
+   })
+
+
+}); 
 
 
 let runGame = () => { 
     createSquares(40); 
-    sizeGrid(40); 
     startDraw(); 
    
 
@@ -166,8 +170,6 @@ let runGame = () => {
         console.log(lengthInput.value); 
 
         createSquares(lengthInput.value);
-
-        sizeGrid(lengthInput.value); 
 
 
         startDraw();
