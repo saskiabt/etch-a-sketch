@@ -129,7 +129,6 @@ function colorPicker() {
             squares[i].removeAttribute('class'); 
             squares[i].removeAttribute("style"); // toggling this on and off will change whether screen clears on each click of rainbow button 
             squares[i].addEventListener('mouseover', ()=> {
-                // squares[i].className = 'permahover-random'
                 squares[i].classList.add('permahover-random'); 
                 squares[i].style.backgroundColor = `${rgb}`; 
             });
@@ -146,12 +145,12 @@ clearButton.addEventListener('click', () => {
 })
 
 
-gridButton.addEventListener('click', () => { 
-   for (let i=0; i<squares.length; i++) {
-    squares[i].classList.toggle('gridShowing')
-   }
-//    gridSquares.classList.toggle('gridShowing'); 
-}); 
+// gridButton.addEventListener('click', () => { 
+//    for (let i=0; i<squares.length; i++) {
+//     squares[i].classList.toggle('gridShowing')
+//    }
+// //    gridSquares.classList.toggle('gridShowing'); 
+// }); 
 
 
 let runGame = () => { 

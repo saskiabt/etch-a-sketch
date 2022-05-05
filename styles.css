@@ -33,7 +33,7 @@ body {
 
 
 
-.gridShowing {
+.squares-container > div {
     border-top: .01px solid rgba(173, 172, 172, 0.212);
     border-right: .01px solid rgba(173, 172, 172, 0.212);
     border-left: .01px solid rgba(173, 172, 172, 0.212);
@@ -175,7 +175,7 @@ body {
     display: flex;
     gap: 20px;
     padding-bottom: 5px;
-    padding-left:33px;
+    padding-left:58px;
       
   }
 
