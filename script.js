@@ -25,12 +25,14 @@ let b;
 let rgb = `rgb(${r},${g},${b})`; 
 
 let gridBorder = document.createElement('style'); 
-gridBorder.innerHTML = `
-    .squares-container > div {
-        border: .01px solid rgba(173, 172, 172, 0.212);
-    }
-`
-gridBorder.classList.add('grid-border'); 
+    gridBorder.innerHTML = `
+        .squares-container > div {
+            border: .01px solid rgba(173, 172, 172, 0.212);
+        }
+    `   
+    gridBorder.classList.add('grid-border'); 
+
+let clicked = false 
 
 function toggleGrid() { 
     gridButton.addEventListener('click', () => { 
@@ -45,6 +47,7 @@ function toggleGrid() {
         }
     });
 }
+
 
 
 // creates a grid with X by X number of squares and x by x number of columns and rows 
@@ -93,12 +96,31 @@ function getRandomInt(min,max) {
 function startDraw() { 
     for (let i=0; i<squares.length; i++) { 
         squares[i].removeAttribute('class'); 
-        squares[i].addEventListener('mouseover', ()=> {
+        // squares[i].addEventListener('mouseover', ()=> {
+        //     squares[i].className=`permahover-${colorChoice}`; 
+        //     if (squares[i].className === "permahover-random") { 
+        //         squares[i].style.backgroundColor = `${rgb}`
+        //     }
+        // });
+        squares[i].addEventListener("mousemove", () => {
+            squares[i].addEventListener("mousedown",  (_) => { clicked = true })
+            squares[i].addEventListener("mouseup", (_) => { clicked = false })
+            if (!clicked) {
+                return
+            }; 
+
+            if (clicked === true) { 
+                squares[i].className=`permahover-${colorChoice}`; 
+                if (squares[i].className === "permahover-random") { 
+                        squares[i].style.backgroundColor = `${rgb}`
+                }
+            }
+
             squares[i].className=`permahover-${colorChoice}`; 
             if (squares[i].className === "permahover-random") { 
-                squares[i].style.backgroundColor = `${rgb}`
+                    squares[i].style.backgroundColor = `${rgb}`
             }
-        });
+        }); 
     }  
 } 
 
@@ -123,12 +145,33 @@ let drawColor = (colorChoice) => {
     for (let i=0; i<squares.length; i++) { 
         squares[i].removeAttribute('class'); 
         squares[i].removeAttribute("style"); 
-        squares[i].addEventListener('mouseover', ()=> {
+
+        squares[i].addEventListener("mousemove", () => {
+            squares[i].addEventListener("mousedown",  (_) => { clicked = true })
+            squares[i].addEventListener("mouseup", (_) => { clicked = false })
+            
+            if (!clicked) {
+                return
+            }; 
+
+            if (clicked === true) { 
+                squares[i].className=`permahover-${colorChoice}`; 
+                if (squares[i].className === "permahover-random") { 
+                        squares[i].style.backgroundColor = `${rgb}`
+                }
+            }
+            
             squares[i].removeAttribute("style"); 
             squares[i].className=`permahover-${colorChoice}`;
-        });
+        }); 
     }
 }
+    //     squares[i].addEventListener('mouseover', ()=> {
+    //         squares[i].removeAttribute("style"); 
+    //         squares[i].className=`permahover-${colorChoice}`;
+    //     });
+    // }
+
 
 
 function colorPicker() { 
@@ -149,13 +192,38 @@ function colorPicker() {
         for (let i=0; i<squares.length; i++) { 
             squares[i].removeAttribute('class'); 
             squares[i].removeAttribute("style"); // toggling this on and off will change whether screen clears on each click of rainbow button 
-            squares[i].addEventListener('mouseover', ()=> {
+
+            squares[i].addEventListener("mousemove", () => {
+                squares[i].addEventListener("mousedown",  (_) => { clicked = true })
+                squares[i].addEventListener("mouseup", (_) => { clicked = false })
+                
+                if (!clicked) {
+                    return
+                }; 
+    
+                if (clicked === true) { 
+                    squares[i].className=`permahover-${colorChoice}`; 
+                    if (squares[i].className === "permahover-random") { 
+                            squares[i].style.backgroundColor = `${rgb}`
+                    }
+                }
+                
                 squares[i].classList.add('permahover-random'); 
                 squares[i].style.backgroundColor = `${rgb}`; 
-            });
+            })
         }
-    });
-}
+    }); 
+}; 
+    
+                
+                
+            // squares[i].addEventListener('mouseover', ()=> {
+            //     squares[i].classList.add('permahover-random'); 
+            //     squares[i].style.backgroundColor = `${rgb}`; 
+            // });
+//         }
+//     });
+// }
 
 
 clearButton.addEventListener('click', () => { 
@@ -171,21 +239,6 @@ gridButton.addEventListener('click', () => {
     }
 }); 
 
-
-
-// gridButton.addEventListener('click', () => { 
-//    for (let i=0; i<squares.length; i++) {
-//     squares[i].removeAttribute("style"); 
-//    }
-
-//    let gridDivs = document.querySelectorAll('.squares-container > div')
-//    let gridDivs_array = [...gridDivs]; 
-//    gridDivs_array.forEach(div => {
-//        div.removeAttribute('style');
-//    })
-
-
-// }); 
 
 
 let runGame = () => { 
