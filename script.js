@@ -24,6 +24,16 @@ let g;
 let b; 
 let rgb = `rgb(${r},${g},${b})`; 
 
+let gridBorder = document.createElement('style'); 
+gridBorder.innerHTML = `
+    .squares-container > div {
+        border-top: .01px solid rgba(173, 172, 172, 0.212);
+        border-right: .01px solid rgba(173, 172, 172, 0.212);
+        border-left: .01px solid rgba(173, 172, 172, 0.212);
+        border-bottom: .01px solid rgba(173, 172, 172, 0.212);
+    }
+`
+
 
 // creates a grid with X by X number of squares and x by x number of columns and rows 
 function createSquares(x) { 
@@ -45,6 +55,10 @@ function createSquares(x) {
         }
     `; 
     squaresContainer.appendChild(gridSizeStyle);
+    
+    for(i=0; i<squares.length; i++) { 
+        squares[i].appendChild(gridBorder)
+    }
 }
 
 // removes all children w the given CSS selector (class or id) from the parent node 
@@ -74,7 +88,10 @@ function startDraw() {
     for (let i=0; i<squares.length; i++) { 
         squares[i].removeAttribute('class'); 
         squares[i].addEventListener('mouseover', ()=> {
-            squares[i].className=`permahover-black`; 
+            squares[i].className=`permahover-${colorChoice}`; 
+            if (squares[i].className === "permahover-random") { 
+                squares[i].style.backgroundColor = `${rgb}`
+            }
         });
     }  
 } 
@@ -143,19 +160,19 @@ clearButton.addEventListener('click', () => {
 })
 
 
-gridButton.addEventListener('click', () => { 
-   for (let i=0; i<squares.length; i++) {
-    squares[i].removeAttribute("style"); 
-   }
+// gridButton.addEventListener('click', () => { 
+//    for (let i=0; i<squares.length; i++) {
+//     squares[i].removeAttribute("style"); 
+//    }
 
-   let gridDivs = document.querySelectorAll('.squares-container > div')
-   let gridDivs_array = [...gridDivs]; 
-   gridDivs_array.forEach(div => {
-       div.removeAttribute('style');
-   })
+//    let gridDivs = document.querySelectorAll('.squares-container > div')
+//    let gridDivs_array = [...gridDivs]; 
+//    gridDivs_array.forEach(div => {
+//        div.removeAttribute('style');
+//    })
 
 
-}); 
+// }); 
 
 
 let runGame = () => { 
