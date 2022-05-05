@@ -27,12 +27,10 @@ let rgb = `rgb(${r},${g},${b})`;
 let gridBorder = document.createElement('style'); 
 gridBorder.innerHTML = `
     .squares-container > div {
-        border-top: .01px solid rgba(173, 172, 172, 0.212);
-        border-right: .01px solid rgba(173, 172, 172, 0.212);
-        border-left: .01px solid rgba(173, 172, 172, 0.212);
-        border-bottom: .01px solid rgba(173, 172, 172, 0.212);
+        border: .01px solid rgba(173, 172, 172, 0.212);
     }
 `
+gridBorder.classList.add('grid-border'); 
 
 
 // creates a grid with X by X number of squares and x by x number of columns and rows 
@@ -59,7 +57,19 @@ function createSquares(x) {
     for(i=0; i<squares.length; i++) { 
         squares[i].appendChild(gridBorder)
     }
-}
+
+    gridButton.addEventListener('click', () => { 
+        if (gridBorder.innerHTML !== '') { 
+            gridBorder.innerHTML = ''
+        } else if (gridBorder.innerHTML === '') { 
+            gridBorder.innerHTML = `
+            .squares-container > div {
+                border: .01px solid rgba(173, 172, 172, 0.212);
+            }
+            `
+        }
+    }); 
+}; 
 
 // removes all children w the given CSS selector (class or id) from the parent node 
 function removeChildren(cssSelector, parentNode){
@@ -159,6 +169,13 @@ clearButton.addEventListener('click', () => {
     }
 })
 
+gridButton.addEventListener('click', () => { 
+    for(i=0; i<squares.length; i++) { 
+        squares[i].removeAttribute(gridBorder)
+    }
+}); 
+
+
 
 // gridButton.addEventListener('click', () => { 
 //    for (let i=0; i<squares.length; i++) {
@@ -191,6 +208,18 @@ let runGame = () => {
 
         startDraw();
         colorPicker(); 
+        
+        gridButton.addEventListener('click', () => { 
+            if (gridBorder.innerHTML !== '') { 
+                gridBorder.innerHTML = ''
+            } else if (gridBorder.innerHTML === '') { 
+                gridBorder.innerHTML = `
+                .squares-container > div {
+                    border: .01px solid rgba(173, 172, 172, 0.212);
+                }
+                `
+            }
+        }); 
             
     });
         
