@@ -69,8 +69,8 @@ body {
     display: flex;
     gap: 83px;
     flex-direction: column;
-    margin-bottom: 247px;
-    margin-left: -120px;
+    margin-bottom: 151px;
+    margin-left: -118px;
 }
 
 .permahover-black { 
@@ -141,6 +141,8 @@ body {
     color: rgb(252, 227, 227);
     justify-content: flex-start;
     gap: 43px;
+    flex-direction: column;
+    align-items: flex-start;
     
 }
 
@@ -179,7 +181,7 @@ body {
     display: flex;
     gap: 20px;
     padding-bottom: 5px;
-    padding-left: 6px;
+    padding-left: 92px;
       
   }
 
