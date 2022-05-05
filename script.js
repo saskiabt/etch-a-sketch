@@ -16,6 +16,7 @@ const blackButton = document.querySelector('#black-button');
 const rainbowButton = document.getElementById('rainbow-button'); 
 const clearButton = document.getElementById('clear-button'); 
 const gridButton = document.querySelector("#grid-button"); 
+const eraserButton = document.querySelector('#eraser-button')
 
 let colorChoice = "black"; 
 
@@ -34,6 +35,7 @@ let gridBorder = document.createElement('style');
 
 let clicked = false 
 
+//turns grid on and off on grid button click 
 function toggleGrid() { 
     gridButton.addEventListener('click', () => { 
         if (gridBorder.innerHTML !== '') { 
@@ -45,9 +47,19 @@ function toggleGrid() {
             }
             `
         }
+        for(i=0; i<squares.length; i++) { 
+            squares[i].removeAttribute(gridBorder)
+        }
     });
 }
 
+// clears drawing on 'clear' button click
+clearButton.addEventListener('click', () => { 
+    for (let i=0; i<squares.length; i++) { 
+        squares[i].removeAttribute('class'); 
+        squares[i].removeAttribute("style");
+    }
+})
 
 
 // creates a grid with X by X number of squares and x by x number of columns and rows 
@@ -105,6 +117,7 @@ function startDraw() {
         squares[i].addEventListener("mousemove", () => {
             squares[i].addEventListener("mousedown",  (_) => { clicked = true })
             squares[i].addEventListener("mouseup", (_) => { clicked = false })
+            console.log(clicked)
             if (!clicked) {
                 return
             }; 
@@ -212,33 +225,79 @@ function colorPicker() {
                 squares[i].style.backgroundColor = `${rgb}`; 
             })
         }
+        eraserButton.addEventListener('click', () => { 
+            for (let i=0; i<squares.length; i++) { 
+                // squares[i].removeAttribute('class', 'permahover-white'); 
+                // squares[i].removeAttribute('class'); 
+                // squares[i].removeAttribute("style"); // toggling this on and off will change whether screen clears on each click of rainbow button 
+        
+                squares[i].addEventListener("mousemove", () => {
+                    squares[i].addEventListener("mousedown",  (_) => { clicked = true })
+                    squares[i].addEventListener("mouseup", (_) => { clicked = false })
+                    
+                    if (!clicked) {
+                        return
+                    }; 
+        
+                    if (clicked === true) { 
+                       squares[i].removeAttribute('class', `permahover-${colorChoice}`); 
+                       squares[i].removeAttribute('class', 'permahover-random');
+                       squares[i].removeAttribute('style', 'background-color'); 
+                    }
+                })
+        }
     }); 
+    }); 
+    
 }; 
     
+
+eraserButton.addEventListener('click', () => { 
+        for (let i=0; i<squares.length; i++) { 
+            // squares[i].removeAttribute('class', 'permahover-white'); 
+            // squares[i].removeAttribute('class'); 
+            // squares[i].removeAttribute("style"); // toggling this on and off will change whether screen clears on each click of rainbow button 
+    
+            squares[i].addEventListener("mousemove", () => {
+                squares[i].addEventListener("mousedown",  (_) => { clicked = true })
+                squares[i].addEventListener("mouseup", (_) => { clicked = false })
                 
-                
-            // squares[i].addEventListener('mouseover', ()=> {
-            //     squares[i].classList.add('permahover-random'); 
-            //     squares[i].style.backgroundColor = `${rgb}`; 
-            // });
-//         }
-//     });
-// }
-
-
-clearButton.addEventListener('click', () => { 
-    for (let i=0; i<squares.length; i++) { 
-        squares[i].removeAttribute('class'); 
-        squares[i].removeAttribute("style");
-    }
-})
-
-gridButton.addEventListener('click', () => { 
-    for(i=0; i<squares.length; i++) { 
-        squares[i].removeAttribute(gridBorder)
+                if (!clicked) {
+                    return
+                }; 
+    
+                if (clicked === true) { 
+                   squares[i].removeAttribute('class', `permahover-${colorChoice}`); 
+                   squares[i].removeAttribute('class', 'permahover-random');
+                   squares[i].removeAttribute('style', 'background-color'); 
+                }
+            })
     }
 }); 
 
+function eraser() { 
+
+eraserButton.addEventListener('click', () => { 
+    for (let i=0; i<squares.length; i++) { 
+        // squares[i].removeAttribute('class', 'permahover-white'); 
+        // squares[i].removeAttribute('class'); 
+        // squares[i].removeAttribute("style"); // toggling this on and off will change whether screen clears on each click of rainbow button 
+
+         squares[i].addEventListener("mousemove", () => {
+            squares[i].addEventListener("mousedown",  (_) => { clicked = true })
+            squares[i].addEventListener("mouseup", (_) => { clicked = false })
+            
+            if (!clicked) {
+                return
+            }; 
+
+            if (clicked === true) { 
+               squares[i].removeAttribute('class', `permahover-${colorChoice}`); 
+            }
+        })
+}
+}); 
+}
 
 
 let runGame = () => { 
@@ -257,13 +316,19 @@ let runGame = () => {
 
         startDraw();
         colorPicker(); 
+        eraser(); 
 
         toggleGrid(); 
+
+        
             
     });
+
+    
         
 };
 
 runGame(); 
 colorPicker(); 
+eraser(); 
 
