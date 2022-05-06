@@ -108,12 +108,6 @@ function getRandomInt(min,max) {
 function startDraw() { 
     for (let i=0; i<squares.length; i++) { 
         squares[i].removeAttribute('class'); 
-        // squares[i].addEventListener('mouseover', ()=> {
-        //     squares[i].className=`permahover-${colorChoice}`; 
-        //     if (squares[i].className === "permahover-random") { 
-        //         squares[i].style.backgroundColor = `${rgb}`
-        //     }
-        // });
         squares[i].addEventListener("mousemove", () => {
             squares[i].addEventListener("mousedown",  (_) => { clicked = true })
             squares[i].addEventListener("mouseup", (_) => { clicked = false })
@@ -179,11 +173,6 @@ let drawColor = (colorChoice) => {
         }); 
     }
 }
-    //     squares[i].addEventListener('mouseover', ()=> {
-    //         squares[i].removeAttribute("style"); 
-    //         squares[i].className=`permahover-${colorChoice}`;
-    //     });
-    // }
 
 
 
@@ -227,10 +216,6 @@ function colorPicker() {
         }
         eraserButton.addEventListener('click', () => { 
             for (let i=0; i<squares.length; i++) { 
-                // squares[i].removeAttribute('class', 'permahover-white'); 
-                // squares[i].removeAttribute('class'); 
-                // squares[i].removeAttribute("style"); // toggling this on and off will change whether screen clears on each click of rainbow button 
-        
                 squares[i].addEventListener("mousemove", () => {
                     squares[i].addEventListener("mousedown",  (_) => { clicked = true })
                     squares[i].addEventListener("mouseup", (_) => { clicked = false })
@@ -254,10 +239,6 @@ function colorPicker() {
 
 eraserButton.addEventListener('click', () => { 
         for (let i=0; i<squares.length; i++) { 
-            // squares[i].removeAttribute('class', 'permahover-white'); 
-            // squares[i].removeAttribute('class'); 
-            // squares[i].removeAttribute("style"); // toggling this on and off will change whether screen clears on each click of rainbow button 
-    
             squares[i].addEventListener("mousemove", () => {
                 squares[i].addEventListener("mousedown",  (_) => { clicked = true })
                 squares[i].addEventListener("mouseup", (_) => { clicked = false })
@@ -279,10 +260,6 @@ function eraser() {
 
 eraserButton.addEventListener('click', () => { 
     for (let i=0; i<squares.length; i++) { 
-        // squares[i].removeAttribute('class', 'permahover-white'); 
-        // squares[i].removeAttribute('class'); 
-        // squares[i].removeAttribute("style"); // toggling this on and off will change whether screen clears on each click of rainbow button 
-
          squares[i].addEventListener("mousemove", () => {
             squares[i].addEventListener("mousedown",  (_) => { clicked = true })
             squares[i].addEventListener("mouseup", (_) => { clicked = false })
