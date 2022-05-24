@@ -55,11 +55,11 @@ body {
     font-family: bc-eric-machat, sans-serif;
     font-weight: 400;
     font-style: italic;
-    color: rgb(252, 227, 227);
+    color: rgb(251, 240, 240);
     display: flex;
-    gap: 83px;
+    gap: 78px;
     flex-direction: column;
-    margin-bottom: 124px;
+    margin-bottom: 132px;
     margin-left: -119px;
 }
 
@@ -141,12 +141,14 @@ body {
 
 
 .length-output { 
-    color: rgb(255 243 243);
-    font-family: bc-eric-machat, sans-serif;
+    color: rgb(255, 243, 243);
+    font-family: 'fenwick', sans-serif;
     font-weight: 300;
     font-style: normal;
-    font-size: 14px;
-    padding-left: 60px;
+    font-size: 10px;
+    padding-left: 57px;
+    font-stretch: condensed;
+    padding-top: 9px;
 }
 
 
@@ -280,4 +282,8 @@ input[type="range"]::-webkit-slider-runnable-track {
     margin-right:5px;
     cursor: grab;
 
+  }
+
+  #grid-icon { 
+      color: rgb(4, 6, 41);
   }
