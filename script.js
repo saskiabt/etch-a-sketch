@@ -175,7 +175,7 @@ let drawColor = (colorChoice) => {
 }
 
 
-
+// adds listeners to all buttons to change drawing color on click of each button, respectively 
 function colorPicker() { 
     blackButton.addEventListener('click', () => {
         colorChoice = "black"; 
@@ -212,6 +212,7 @@ function colorPicker() {
                 
                 squares[i].classList.add('permahover-random'); 
                 squares[i].style.backgroundColor = `${rgb}`; 
+                
             })
         }
         eraserButton.addEventListener('click', () => { 
@@ -236,7 +237,6 @@ function colorPicker() {
     
 }; 
     
-
 eraserButton.addEventListener('click', () => { 
         for (let i=0; i<squares.length; i++) { 
             squares[i].addEventListener("mousemove", () => {
@@ -256,27 +256,6 @@ eraserButton.addEventListener('click', () => {
     }
 }); 
 
-function eraser() { 
-
-eraserButton.addEventListener('click', () => { 
-    for (let i=0; i<squares.length; i++) { 
-         squares[i].addEventListener("mousemove", () => {
-            squares[i].addEventListener("mousedown",  (_) => { clicked = true })
-            squares[i].addEventListener("mouseup", (_) => { clicked = false })
-            
-            if (!clicked) {
-                return
-            }; 
-
-            if (clicked === true) { 
-               squares[i].removeAttribute('class', `permahover-${colorChoice}`); 
-            }
-        })
-}
-}); 
-}
-
-
 let runGame = () => { 
     createSquares(40); 
     startDraw(); 
@@ -293,7 +272,7 @@ let runGame = () => {
 
         startDraw();
         colorPicker(); 
-        eraser(); 
+        erase(); 
 
         toggleGrid(); 
 
@@ -307,5 +286,3 @@ let runGame = () => {
 
 runGame(); 
 colorPicker(); 
-eraser(); 
-
