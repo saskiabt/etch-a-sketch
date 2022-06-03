@@ -1,7 +1,7 @@
 # etch-a-sketch
 Etch-a-Sketch / sketch pad build in Javascript, CSS and HTML.
 
-Through this project, I leared a lot about event handling, DOM manipulation, how to control and manipulate styles, classes, and other attributes in JS, and how to do more advanced styling in CSS to try to mock-up a traditional etch-a-sketch. 
+Through this project, I learned a lot about event handling, DOM manipulation, how to control and manipulate styles, classes, and other attributes in JS, and how to do more advanced styling in CSS to try to mock-up a traditional etch-a-sketch. 
 
 Features: 
 
